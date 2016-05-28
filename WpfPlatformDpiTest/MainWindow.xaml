@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfPlatformDpiTest.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:WpfPlatformDpiTest"
+		x:Name="WindowRoot"
+		Title="WPF Platform DPI Test"
+		Height="300" Width="400" >
+	<Window.Resources>
+		<local:DpiScaleToStringConverter x:Key="DpiScaleToStringConverterKey"/>
+	</Window.Resources>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="30"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="20"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0"
+				   Padding="8" VerticalAlignment="Center"
+				   FontSize="14"
+				   Text="DPI"/>
+		<TextBox Grid.Row="0" Grid.Column="1"
+				 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+				 FontSize="14" IsReadOnly="True"
+				 Text="{Binding CurrentDpi, ElementName=WindowRoot, Converter={StaticResource DpiScaleToStringConverterKey}}"/>
+		<Image Grid.Row="0" Grid.Column="2"
+			   x:Name="TestImage"/>
+
+		<WrapPanel Grid.Row="1" Grid.ColumnSpan="3">
+			<CheckBox Margin="4,4,0,4"
+					  Content="SetHandledTrue"
+					  IsChecked="{Binding SetHandledTrue, ElementName=WindowRoot}"/>
+			<CheckBox Margin="4,4,0,4"
+					  Content="SetRootDpi"
+					  IsChecked="{Binding SetRootDpi, ElementName=WindowRoot}"/>
+			<CheckBox Margin="4,4,0,4"
+					  Content="CallBaseOnDpiChanged"
+					  IsChecked="{Binding CallBaseOnDpiChanged, ElementName=WindowRoot}"/>
+		</WrapPanel>
+
+		<ListView Grid.Row="2" Grid.ColumnSpan="3"
+				  Foreground="White" Background="DimGray"
+				  ScrollViewer.VerticalScrollBarVisibility="Auto"
+				  ItemsSource="{Binding Status, ElementName=WindowRoot}"/>
+
+		<Button Grid.Row="3" Grid.ColumnSpan="3"
+				Content="Clear" Click="ButtonClear_Click"/>
+	</Grid>
+</Window>
