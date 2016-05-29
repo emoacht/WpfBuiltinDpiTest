@@ -9,12 +9,16 @@ using System.Windows.Data;
 
 namespace WpfPlatformDpiTest
 {
+	[ValueConversion(typeof(DpiScale), typeof(string))]
 	public class DpiScaleToStringConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			var dpiScale = (DpiScale)value;
-			return $"{dpiScale.PixelsPerInchX}-{dpiScale.PixelsPerInchY}";
+			if (!(value is DpiScale))
+				return DependencyProperty.UnsetValue;
+
+			var dpi = (DpiScale)value;
+			return $"{dpi.PixelsPerInchX}-{dpi.PixelsPerInchY}";
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
