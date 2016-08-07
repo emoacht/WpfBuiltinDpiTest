@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfManifestTest.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:WpfManifestTest"
+		Title="WPF Manifest Test"
+		Height="200" Width="400" ResizeMode="NoResize">
+	<Border Margin="8"
+			BorderThickness="1" BorderBrush="Black"
+			UseLayoutRounding="True">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+					BorderThickness="0,0,0,1" BorderBrush="Black">
+				<TextBlock Margin="8,2" FontSize="16"
+						   Text="app.manifest"/>
+			</Border>
+
+			<TextBlock Grid.Row="1" Grid.Column="0"
+					   Margin="8,2" VerticalAlignment="Center"
+					   FontSize="24"
+					   Text="dpiAware:"/>
+			<TextBlock Grid.Row="1" Grid.Column="1"
+					   x:Name="TextDpiAware"
+					   FontSize="32"
+					   Text=""/>
+
+			<TextBlock Grid.Row="2" Grid.Column="0"
+					   Margin="8,2" VerticalAlignment="Center"
+					   FontSize="24"
+					   Text="dpiAwareness:"/>
+			<TextBlock Grid.Row="2" Grid.Column="1"
+					   x:Name="TextDpiAwareness"
+					   FontSize="32"
+					   Text=""/>
+		</Grid>
+	</Border>
+</Window>
