@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WpfPlatformDpiTest
+namespace WpfBuiltinDpiTest
 {
 	[ValueConversion(typeof(DpiScale), typeof(string))]
 	public class DpiScaleToStringConverter : IValueConverter

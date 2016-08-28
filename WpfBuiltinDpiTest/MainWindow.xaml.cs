@@ -13,9 +13,8 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
-namespace WpfPlatformDpiTest
+namespace WpfBuiltinDpiTest
 {
 	public partial class MainWindow : Window
 	{

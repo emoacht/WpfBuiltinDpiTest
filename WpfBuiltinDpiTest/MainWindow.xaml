@@ -1,10 +1,10 @@
-﻿<Window x:Class="WpfPlatformDpiTest.MainWindow"
+﻿<Window x:Class="WpfBuiltinDpiTest.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:local="clr-namespace:WpfPlatformDpiTest"
+		xmlns:local="clr-namespace:WpfBuiltinDpiTest"
 		x:Name="WindowRoot"
-		Title="WPF Platform DPI Test"
-		Height="300" Width="400" >
+		Title="WPF Built-in DPI Test"
+		Height="300" Width="400">
 	<Window.Resources>
 		<local:DpiScaleToStringConverter x:Key="DpiScaleToStringConverterKey"/>
 	</Window.Resources>
