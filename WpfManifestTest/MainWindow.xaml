@@ -3,7 +3,7 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:WpfManifestTest"
 		Title="WPF Manifest Test"
-		Height="200" Width="400" ResizeMode="NoResize">
+		Height="240" Width="480" ResizeMode="NoResize">
 	<Border Margin="8"
 			BorderThickness="1" BorderBrush="Black"
 			UseLayoutRounding="True">
@@ -13,6 +13,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
@@ -27,19 +28,28 @@
 
 			<TextBlock Grid.Row="1" Grid.Column="0"
 					   Margin="8,2" VerticalAlignment="Center"
-					   FontSize="24"
+					   FontSize="22"
 					   Text="dpiAware:"/>
 			<TextBlock Grid.Row="1" Grid.Column="1"
-					   x:Name="TextDpiAware"
+					   x:Name="DpiAwareValue"
 					   FontSize="32"
 					   Text=""/>
 
 			<TextBlock Grid.Row="2" Grid.Column="0"
 					   Margin="8,2" VerticalAlignment="Center"
-					   FontSize="24"
+					   FontSize="22"
 					   Text="dpiAwareness:"/>
 			<TextBlock Grid.Row="2" Grid.Column="1"
-					   x:Name="TextDpiAwareness"
+					   x:Name="DpiAwarenessValue"
+					   FontSize="32"
+					   Text=""/>
+
+			<TextBlock Grid.Row="3" Grid.Column="0"
+					   Margin="8,2" VerticalAlignment="Center"
+					   FontSize="16"
+					   Text="DoNotScaleForDpiChanges:"/>
+			<TextBlock Grid.Row="3" Grid.Column="1"
+					   x:Name="DoNotScaleForDpiChangesValue"
 					   FontSize="32"
 					   Text=""/>
 		</Grid>
