@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,8 @@ namespace WpfApiTest
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			FindHwndSource();
 		}
 
 		private HwndSource _source;
@@ -40,6 +43,8 @@ namespace WpfApiTest
 
 			_source = PresentationSource.FromVisual(this) as HwndSource;
 			_source?.AddHook(WndProc);
+
+			FindHwndSource();
 		}
 
 		private const int WM_NCCREATE = 0x0081;
@@ -52,6 +57,23 @@ namespace WpfApiTest
 			}
 
 			return IntPtr.Zero;
+		}
+
+		private void FindHwndSource()
+		{
+			var sourceWindowHelperType = typeof(Window).Assembly.GetType("System.Windows.Window+SourceWindowHelper");
+			var sourceWindowHelperField = typeof(Window).GetField("_swh", BindingFlags.NonPublic | BindingFlags.Instance);
+			var sourceWindowHelperValue = sourceWindowHelperField.GetValue(this);
+
+			Debug.WriteLine($"SourceWindowHelper: {sourceWindowHelperValue != null}");
+
+			if (sourceWindowHelperValue != null)
+			{
+				var hwndSourceField = sourceWindowHelperType.GetField("_sourceWindow", BindingFlags.NonPublic | BindingFlags.Instance);
+				var hwndSourceValue = hwndSourceField.GetValue(sourceWindowHelperValue) as HwndSource;
+
+				Debug.WriteLine($"HwndSource: {hwndSourceValue != null}");
+			}
 		}
 	}
 }
