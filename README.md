@@ -1,11 +1,12 @@
-﻿WPF Built-in DPI Test
-=====================
+﻿# WPF Built-in DPI Test
 
-This project is for testing WPF built-in scaling for Per-Monitor DPI.
+Test WPF built-in scaling for Per-Monitor DPI.
 
-##Note
+## Requirements
 
-Installation of [.NET Framework 4.6.2] [1] is required.
+ * [.NET Framework 4.6.2][1]
+
+## Development
 
 Read Developer Guide and check samples in Microsoft's repository.
 
